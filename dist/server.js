@@ -8,4 +8,10 @@ const db_1 = require("./config/db");
 const app_1 = __importDefault(require("./app"));
 dotenv_1.default.config();
 const PORT = process.env.PORT;
-(0, db_1.connectDB)().then(() => app_1.default.listen(PORT, () => console.log("Server is running on http://localhost:9999/")));
+app_1.default.get("/", (req, res) => {
+    res.send("Xin chào! Chúc mừng bạn đã làm được");
+});
+(0, db_1.connectDB)().then(() => app_1.default.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}/`)));
+app_1.default.listen(PORT, () => {
+    console.log(`Server đang chạy tại http://localhost:${PORT}`);
+});
